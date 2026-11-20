@@ -1,0 +1,17 @@
+- command: LOAD
+  B: 26
+  C: 16
+
+- command: READ
+  B: 20
+  C: 24
+  D: 46
+
+- command: STORE
+  B: 21
+  C: 29
+
+- command: AND
+  B: 14
+  C: 100
+  D: 12
