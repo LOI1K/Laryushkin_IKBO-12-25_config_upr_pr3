@@ -1,0 +1,70 @@
+# Initialize the source array: [7, 12, 25]
+
+- command: LOAD
+  B: 7
+  C: 1
+- command: LOAD
+  B: 100
+  C: 2
+- command: STORE
+  B: 1
+  C: 2
+
+- command: LOAD
+  B: 12
+  C: 1
+- command: LOAD
+  B: 101
+  C: 2
+- command: STORE
+  B: 1
+  C: 2
+
+- command: LOAD
+  B: 25
+  C: 1
+- command: LOAD
+  B: 102
+  C: 2
+- command: STORE
+  B: 1
+  C: 2
+
+# Copy the array to addresses 200-202
+
+- command: LOAD
+  B: 100
+  C: 0
+
+- command: READ
+  B: 0
+  C: 1
+  D: 0
+- command: LOAD
+  B: 200
+  C: 2
+- command: STORE
+  B: 1
+  C: 2
+
+- command: READ
+  B: 0
+  C: 1
+  D: 1
+- command: LOAD
+  B: 201
+  C: 2
+- command: STORE
+  B: 1
+  C: 2
+
+- command: READ
+  B: 0
+  C: 1
+  D: 2
+- command: LOAD
+  B: 202
+  C: 2
+- command: STORE
+  B: 1
+  C: 2
