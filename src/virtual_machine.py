@@ -22,7 +22,7 @@ class VirtualMachine:
             raise ValueError(f"Недопустимый адрес памяти: {address}")
 
     def execute(self, instruction):
-        """Execute one LOAD, READ or STORE instruction."""
+        """Execute a virtual machine instruction."""
         opcode = instruction["A"]
 
         if opcode == 4:
@@ -41,8 +41,16 @@ class VirtualMachine:
             self.check_address(address)
             self.memory[address] = self.registers[instruction["B"]]
 
+        elif opcode == 1:
+            address = instruction["C"]
+            self.check_address(address)
+            self.registers[instruction["D"]] = (
+                self.memory[address] & self.registers[instruction["B"]]
+            )
+
         else:
-            raise ValueError(f"Команда пока не поддерживается: {opcode}")
+            raise ValueError(f"Неизвестная команда: {opcode}")
+
 
     def run(self):
         """Decode and execute the machine-code program."""

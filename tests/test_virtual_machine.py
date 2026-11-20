@@ -45,12 +45,27 @@ class TestVirtualMachine(unittest.TestCase):
         with self.assertRaises(ValueError):
             machine.execute({"A": 3, "B": 1, "C": 2})
 
-    def test_unimplemented_and(self):
-        """Reject the ALU command before stage four."""
+    def test_and_operation(self):
+        """Apply bitwise AND to memory and register values."""
+        machine = VirtualMachine(b"")
+        machine.memory[100] = 12
+        machine.registers[2] = 10
+
+        machine.execute({"A": 1, "B": 2, "C": 100, "D": 4})
+
+        self.assertEqual(machine.registers[4], 8)
+        self.assertEqual(machine.memory[100], 12)
+
+    def test_and_invalid_address(self):
+        """Reject invalid memory addresses in AND instructions."""
         machine = VirtualMachine(b"")
 
         with self.assertRaises(ValueError):
-            machine.execute({"A": 1, "B": 0, "C": 0, "D": 0})
+            machine.execute({
+                "A": 1, "B": 2,
+                "C": MEMORY_SIZE, "D": 4,
+            })
+
 
 
 if __name__ == "__main__":

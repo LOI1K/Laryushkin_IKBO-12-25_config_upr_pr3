@@ -1,0 +1,32 @@
+# Store 12 in memory address 100
+- command: LOAD
+  B: 12
+  C: 1
+
+- command: LOAD
+  B: 100
+  C: 3
+
+- command: STORE
+  B: 1
+  C: 3
+
+# Load 10 into register R2
+- command: LOAD
+  B: 10
+  C: 2
+
+# R4 = memory[100] AND R2
+- command: AND
+  B: 2
+  C: 100
+  D: 4
+
+# Store result at memory address 200
+- command: LOAD
+  B: 200
+  C: 5
+
+- command: STORE
+  B: 4
+  C: 5
